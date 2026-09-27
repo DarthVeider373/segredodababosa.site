@@ -1,0 +1,406 @@
+<title>Usos da Babosa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Mulish:wght@400;500;600;700&family=Overpass+Mono:wght@500&display=swap');
+
+  :root{
+    --bg:#F1F3EE;
+    --surface:#FFFFFF;
+    --ink:#20281F;
+    --ink-muted:#5C6B57;
+    --accent:#4F7A4B;
+    --accent-soft:#E1EAD9;
+    --line:#DCE0D5;
+    --shadow: 0 1px 2px rgba(32,40,31,0.06), 0 8px 24px rgba(32,40,31,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141810;
+      --surface:#1B2016;
+      --ink:#EDF1E7;
+      --ink-muted:#A3AE99;
+      --accent:#8FC07E;
+      --accent-soft:#212B1A;
+      --line:#2B3324;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141810;
+    --surface:#1B2016;
+    --ink:#EDF1E7;
+    --ink-muted:#A3AE99;
+    --accent:#8FC07E;
+    --accent-soft:#212B1A;
+    --line:#2B3324;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Mulish', -apple-system, Segoe UI, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-inline:20px;
+  }
+  a{color:inherit;}
+
+  .page{
+    max-width:700px;
+    margin:0 auto;
+    padding-block:36px 64px;
+  }
+
+  header.masthead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding-bottom:20px;
+    margin-bottom:28px;
+    border-bottom:1px solid var(--line);
+    font-family:'Overpass Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-muted);
+  }
+  .masthead .mark{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  .mark svg{flex:none;}
+
+  .eyebrow{
+    display:inline-block;
+    font-family:'Overpass Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:5px 10px;
+    border-radius:4px;
+    margin-bottom:16px;
+  }
+
+  h1{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:700;
+    font-size:clamp(30px, 5.5vw, 44px);
+    line-height:1.12;
+    letter-spacing:-0.005em;
+    margin:0 0 16px;
+    text-wrap:balance;
+  }
+
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    align-items:center;
+    font-family:'Overpass Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-muted);
+    margin-bottom:28px;
+  }
+  .meta span:not(:last-child)::after{
+    content:'·';
+    margin-left:14px;
+    color:var(--line);
+  }
+
+  figure{margin:0 0 8px;}
+  figure img{
+    width:100%;
+    max-width:100%;
+    display:block;
+    border-radius:10px;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    background:var(--line);
+  }
+  figcaption{
+    font-family:'Overpass Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-muted);
+    margin-top:8px;
+    margin-bottom:32px;
+  }
+
+  .lead{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:600;
+    font-size:22px;
+    line-height:1.5;
+    color:var(--ink);
+    margin:0 0 28px;
+  }
+
+  article p{
+    font-size:16.5px;
+    line-height:1.75;
+    color:var(--ink);
+    max-width:64ch;
+    margin:0 0 20px;
+  }
+  article h2{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:700;
+    font-size:27px;
+    line-height:1.25;
+    margin:40px 0 16px;
+    text-wrap:balance;
+  }
+
+  .callout{
+    background:var(--accent-soft);
+    border-radius:10px;
+    padding:20px 22px;
+    margin:28px 0;
+    display:flex;
+    gap:14px;
+  }
+  .callout .dot{
+    flex:none;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    margin-top:9px;
+  }
+  .callout p{
+    margin:0;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink);
+  }
+  .callout strong{color:var(--accent);}
+
+  blockquote{
+    margin:32px 0;
+    padding:4px 0 4px 22px;
+    border-left:3px solid var(--accent);
+  }
+  blockquote p{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:23px;
+    line-height:1.45;
+    color:var(--ink);
+    margin:0;
+  }
+
+  ol.habits{
+    list-style:none;
+    counter-reset:habit;
+    margin:24px 0 32px;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  ol.habits li{
+    counter-increment:habit;
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  ol.habits li::before{
+    content:counter(habit, decimal-leading-zero);
+    font-family:'Overpass Mono', monospace;
+    font-size:13px;
+    color:var(--accent);
+    padding-top:2px;
+  }
+  ol.habits h3{
+    font-family:'Mulish', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    margin:0 0 4px;
+  }
+  ol.habits p{
+    margin:0;
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink-muted);
+    max-width:56ch;
+  }
+
+  .divider{
+    height:1px;
+    background:var(--line);
+    margin:44px 0;
+    border:0;
+  }
+
+  .closing-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px;
+    margin-top:12px;
+    box-shadow:var(--shadow);
+  }
+  .closing-card p.kicker{
+    font-family:'Overpass Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-muted);
+    margin:0 0 10px;
+  }
+  .closing-card h3{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-size:23px;
+    font-weight:700;
+    margin:0 0 10px;
+    text-wrap:balance;
+  }
+  .closing-card p{
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink-muted);
+    margin:0 0 20px;
+    max-width:56ch;
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--accent);
+    color:#F4FAF1;
+    text-decoration:none;
+    font-family:'Mulish', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:12px 20px;
+    border-radius:8px;
+    transition:opacity .15s ease;
+  }
+  .cta-btn:hover{opacity:0.88;}
+  .cta-btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  footer{
+    margin-top:48px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-family:'Overpass Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-muted);
+    line-height:1.7;
+  }
+
+  @media (max-width:480px){
+    ol.habits li{grid-template-columns:28px 1fr;}
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="mark">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 14C8 14 8 9 8 6C8 3.5 6 2 4 2C4 5 5.5 7 8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M8 8C10.5 7 12 5 12 2C10 2 8 3.5 8 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Raiz &amp; Folha
+    </div>
+    <span>Plantas &amp; Bem-estar</span>
+  </header>
+
+  <article>
+    <span class="eyebrow">Cuidados naturais</span>
+    <h1>Babosa: para que serve e como é usada tradicionalmente</h1>
+
+    <div class="meta">
+      <span>Por Redação</span>
+      <span>Atualizado em 26 de setembro de 2026</span>
+      <span>Leitura de 4 min</span>
+    </div>
+
+    <figure>
+      <img src="hero.jpg" alt="Vaso branco com uma planta de babosa (aloe vera) de folhas verdes escuras salpicadas">
+      <figcaption>Fácil de cultivar em casa, a babosa é uma das plantas mais usadas em cuidados caseiros.</figcaption>
+    </figure>
+
+    <p class="lead">Presente em quintais e vasos de janela, a babosa (Aloe vera) carrega gerações de uso caseiro. Reunimos o que se sabe sobre a planta, seus usos mais populares e os cuidados que valem a pena ter antes de usá-la.</p>
+
+    <p>O gel transparente encontrado no interior das folhas é a parte mais usada da planta. Rico em água, ele é tradicionalmente aplicado na pele e nos cabelos como parte de rotinas caseiras de hidratação — um hábito que atravessa culturas diferentes ao redor do mundo.</p>
+
+    <p>Vale lembrar que "uso tradicional" não é sinônimo de comprovação científica para todo fim. Parte dos benefícios populares da babosa tem respaldo em estudos preliminares; outros ainda dependem de mais pesquisa. Por isso, tratá-la como cuidado complementar — e não como substituto de tratamento médico — é o caminho mais seguro.</p>
+
+    <div class="callout">
+      <span class="dot"></span>
+      <p><strong>Antes de usar:</strong> faça um teste em uma pequena área da pele e aguarde 24h para verificar reação alérgica. Gestantes, lactantes e pessoas com pele sensível ou ferimentos devem consultar um médico ou dermatologista antes de usar a babosa.</p>
+    </div>
+
+    <h2>Cinco usos populares da babosa</h2>
+
+    <ol class="habits">
+      <li>
+        <div>
+          <h3>Hidratação da pele</h3>
+          <p>O gel é usado como hidratante caseiro em áreas ressecadas, geralmente aplicado puro ou combinado a outros ingredientes naturais.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Cuidado com os cabelos</h3>
+          <p>Aplicado no couro cabeludo ou nas pontas, é usado tradicionalmente para deixar os fios com aspecto mais macio.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Máscaras caseiras</h3>
+          <p>Costuma entrar em receitas de máscara facial junto a outros ingredientes, como parte da rotina de skincare caseiro.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Alívio após exposição ao sol</h3>
+          <p>O gel gelado é popularmente usado para uma sensação de frescor na pele após dias muito quentes — sem substituir protetor solar ou cuidado médico em casos de queimadura.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Planta ornamental de fácil cuidado</h3>
+          <p>Além do uso cosmético, a babosa é popular como planta de vaso: exige pouca água e se adapta bem a ambientes internos com luz indireta.</p>
+        </div>
+      </li>
+    </ol>
+
+    <blockquote>
+      <p>"Tradição popular e evidência científica nem sempre andam no mesmo ritmo — vale aproveitar uma com respeito pela outra."</p>
+    </blockquote>
+
+    <h2>Como extrair o gel com segurança</h2>
+    <p>Corte uma folha próxima à base, deixe escorrer a seiva amarelada (látex) por alguns minutos — ela pode irritar a pele de algumas pessoas — e só então retire a polpa transparente de dentro da folha. Lave bem antes de usar e prefira preparar pequenas quantidades por vez, já que o gel fresco se conserva por pouco tempo na geladeira.</p>
+
+    <p>Como em qualquer cuidado natural, a resposta da pele varia de pessoa para pessoa. Prestar atenção aos sinais do próprio corpo é a melhor forma de saber se um hábito faz sentido para você.</p>
+
+    <hr class="divider">
+
+    <div class="closing-card">
+      <p class="kicker">Continue por aqui</p>
+      <h3>Quer conhecer outras plantas usadas em cuidados caseiros?</h3>
+      <p>Preparamos um guia com mais detalhes sobre cultivo, extração do gel e receitas caseiras com babosa.</p>
+      <a class="cta-btn" href="#" target="_blank" rel="noopener">
+        Continuar lendo
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <footer>
+      Este conteúdo tem caráter informativo e reúne usos populares da babosa. Não substitui orientação médica ou dermatológica — consulte um profissional de saúde antes de usar em ferimentos, queimaduras ou peles sensíveis.
+    </footer>
+  </article>
+
+</div>
